@@ -28,12 +28,14 @@ int main(){
   printf("\n");
 
   printf("Writing to rand...\n\n");
-  int fd = open("rand", O_CREAT | O_RDWR, 0666);
+  int fd = open("rand", O_CREAT | O_WRONLY, 0666);
+  //printf("Error: %s\n", strerror(errno));
   int n = write(fd,arr,40);
   close(fd);
 
   printf("Reading rand into arr2...\n\n");
   int fd2 = open("rand", O_RDONLY);
+  //printf("Error: %s\n", strerror(errno));
   int arr2[10];
   read(fd2, arr2, 40);
   close(fd2);
